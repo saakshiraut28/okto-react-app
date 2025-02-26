@@ -4,6 +4,8 @@ import { AuthData, useOkto } from "@okto_web3/react-sdk";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Homepage from "./pages/Homepage";
+import ExplorerFunctions from "./pages/ExplorerFunctions";
+import Intent from "./pages/IntentFunctions";
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<Homepage />} />
+        <Route path="/explorer" element={<ExplorerFunctions />} />
+        <Route path="/intent" element={<Intent />} />
       </Routes>
     </>
   );

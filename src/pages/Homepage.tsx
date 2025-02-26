@@ -19,10 +19,8 @@ export default function Homepage() {
   const envconfig = oktoClient.env;
   const userSWA = oktoClient.userSWA;
 
-  // handles user logout process
   async function handleLogout() {
     try {
-      // Perform Google OAuth logout and remove stored token
       googleLogout();
       localStorage.removeItem("googleIdToken");
       navigate("/");
@@ -33,27 +31,51 @@ export default function Homepage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-violet-100 to-violet-200 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <h1 className="text-center text-4xl font-bold text-violet-900 mb-12">
+    <main className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-[600px] space-y-6">
+        <h1 className="text-center text-2xl font-bold text-black underline">
           Okto v2 SDK Demo
         </h1>
 
-        <div className="space-y-4">
-          <h2 className="text-violet-900 font-bold text-2xl">Env Config</h2>
-          <pre className="whitespace-pre-wrap break-words bg-white p-6 rounded-xl text-gray-800 w-full border border-violet-200 shadow-lg">
+        {/* Env Config */}
+        <div className="bg-white w-full p-2 rounded-xl border border-black shadow-lg">
+          <h2 className="text-black font-bold text-lg mb-2">Env Config</h2>
+          <pre className="whitespace-pre-wrap break-words bg-gray-100 p-2 rounded-md text-gray-800 border border-black text-left">
             {isloggedIn ? JSON.stringify(envconfig, null, 2) : "not signed in"}
           </pre>
         </div>
-        <div className="space-y-4">
-          <h2 className="text-violet-900 font-bold text-2xl">User Details</h2>
-          <pre className="whitespace-pre-wrap break-words bg-white p-6 rounded-xl text-gray-800 w-full border border-violet-200 shadow-lg">
+
+        {/* User Details */}
+        <div className="bg-white w-full p-2 rounded-xl border border-black shadow-lg">
+          <h2 className="text-black font-bold text-lg mb-2">User Details</h2>
+          <pre className="whitespace-pre-wrap break-words bg-gray-100 p-2 rounded-md text-gray-800 border border-black text-left">
             {isloggedIn ? `Logged in. userSWA: ${userSWA}` : "not signed in"}
           </pre>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg border border-violet-200 p-6 mb-8">
-          <h2 className="text-violet-900 font-semibold text-2xl mb-6">
+        <div className="flex justify-center gap-4">
+          <div className="bg-white p-6">
+            <button className="px-4 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/explorer') }}>
+              Explorers
+            </button>
+          </div>
+
+          <div className="bg-white p-6">
+            <button className="px-4 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/intent') }}>
+              Intents
+            </button>
+          </div>
+
+          <div className="bg-white p-6">
+            <button className="px-4 py-2 text-black bg-gray-200 hover:bg-gray-400 transition">
+              UserOp
+            </button>
+          </div>
+        </div>
+
+        {/* Explorer Functions
+        <div className="bg-white w-full p-6 rounded-xl border border-black shadow-lg">
+          <h2 className="text-black font-semibold text-2xl mb-6">
             Explorer Functions
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -71,10 +93,9 @@ export default function Homepage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg border border-violet-200 p-6">
-          <h2 className="text-violet-900 font-semibold text-2xl mb-6">
-            Intents
-          </h2>
+
+        <div className="bg-white w-full p-6 rounded-xl border border-black shadow-lg">
+          <h2 className="text-black font-semibold text-2xl mb-6">Intents</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate("/transfertoken")}
@@ -95,7 +116,7 @@ export default function Homepage() {
               Raw Transaction
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   );
