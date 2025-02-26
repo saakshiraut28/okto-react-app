@@ -1,12 +1,4 @@
-import GetButton from "./../components/GetButton";
 import {
-  getAccount,
-  getChains,
-  getOrdersHistory,
-  getPortfolio,
-  getPortfolioActivity,
-  getPortfolioNFT,
-  getTokens,
   useOkto,
 } from "@okto_web3/react-sdk";
 import { googleLogout } from "@react-oauth/google";
@@ -36,6 +28,7 @@ export default function Homepage() {
         <h1 className="text-center text-2xl font-bold text-black underline">
           Okto v2 SDK Demo
         </h1>
+        <div>{isloggedIn ? (<button className="px-12 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={handleLogout}>Logout</button>) : (<>Login</>)}</div>
 
         {/* Env Config */}
         <div className="bg-white w-full p-2 rounded-xl border border-black shadow-lg">
@@ -54,69 +47,22 @@ export default function Homepage() {
         </div>
 
         <div className="flex justify-center gap-4">
-          <div className="bg-white p-6">
-            <button className="px-4 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/explorer') }}>
+          <div className="bg-white p-2">
+            <button className="px-12 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/explorer') }}>
               Explorers
             </button>
           </div>
-
-          <div className="bg-white p-6">
-            <button className="px-4 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/intent') }}>
-              Intents
+          <div className="bg-white p-2">
+            <button className="px-12 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/intent') }}>
+              Intent
             </button>
           </div>
-
-          <div className="bg-white p-6">
-            <button className="px-4 py-2 text-black bg-gray-200 hover:bg-gray-400 transition">
+          <div className="bg-white p-2">
+            <button className="px-12 py-2 text-black bg-gray-200 hover:bg-gray-400 transition" onClick={() => { navigate('/userop') }}>
               UserOp
             </button>
           </div>
         </div>
-
-        {/* Explorer Functions
-        <div className="bg-white w-full p-6 rounded-xl border border-black shadow-lg">
-          <h2 className="text-black font-semibold text-2xl mb-6">
-            Explorer Functions
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <GetButton title="Okto Log out" apiFn={handleLogout} />
-            <GetButton title="getAccount" apiFn={getAccount} />
-            <GetButton title="getChains" apiFn={getChains} />
-            <GetButton title="getOrdersHistory" apiFn={getOrdersHistory} />
-            <GetButton title="getPortfolio" apiFn={getPortfolio} />
-            <GetButton
-              title="getPortfolioActivity"
-              apiFn={getPortfolioActivity}
-            />
-            <GetButton title="getPortfolioNFT" apiFn={getPortfolioNFT} />
-            <GetButton title="getTokens" apiFn={getTokens} />
-          </div>
-        </div>
-
-
-        <div className="bg-white w-full p-6 rounded-xl border border-black shadow-lg">
-          <h2 className="text-black font-semibold text-2xl mb-6">Intents</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => navigate("/transfertoken")}
-              className="px-6 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-center font-medium"
-            >
-              Transfer Token
-            </button>
-            <button
-              onClick={() => navigate("/transfernft")}
-              className="px-6 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-center font-medium"
-            >
-              Transfer NFT
-            </button>
-            <button
-              onClick={() => navigate("/rawtransaction")}
-              className="px-6 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-center font-medium"
-            >
-              Raw Transaction
-            </button>
-          </div>
-        </div> */}
       </div>
     </main>
   );

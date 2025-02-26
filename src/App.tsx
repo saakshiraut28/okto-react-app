@@ -6,6 +6,10 @@ import LoginPage from "./LoginPage";
 import Homepage from "./pages/Homepage";
 import ExplorerFunctions from "./pages/ExplorerFunctions";
 import Intent from "./pages/IntentFunctions";
+import TransferNFT from "./components/TransferNft";
+import RawTransaction from "./components/RawTransaction";
+import TransferTokens from "./components/TransferTokens";
+import UserOp from "./pages/UserOp";
 
 
 function App() {
@@ -23,6 +27,10 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/explorer" element={<ExplorerFunctions />} />
         <Route path="/intent" element={<Intent />} />
+        <Route path="/userop" element={<UserOp />} />
+        <Route path="/transfertoken" element={<TransferTokens />} />
+        <Route path="/transfernft" element={<TransferNFT />} />
+        <Route path="/rawtransaction" element={<RawTransaction />} />
       </Routes>
     </>
   );
