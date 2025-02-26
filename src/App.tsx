@@ -1,37 +1,27 @@
-import { useState } from "react";
-import { useOkto } from "@okto_web3/react-sdk";
-import { GoogleLogin } from "@react-oauth/google";
-import { UserDashboard } from "./components/UserDashboard";
- 
+
+import "./App.css";
+import { AuthData, useOkto } from "@okto_web3/react-sdk";
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import Homepage from "./pages/Homepage";
+
+
 function App() {
-    const oktoClient = useOkto();
-    const [isLoading, setIsLoading] = useState(false);
- 
-    async function handleGoogleLogin(credentialResponse: any) {
-        try {
-            setIsLoading(true);
-            await oktoClient.loginUsingOAuth({
-                idToken: credentialResponse.credential,
-                provider: "google",
-            });
-        } catch (error) {
-            console.error("Authentication error:", error);
-        } finally {
-            setIsLoading(false);
-        }
-    }
- 
-    return (
-        <div>
-            {isLoading ? (
-                <div>Loading...</div>
-            ) : oktoClient.userSWA ? (
-                <UserDashboard />
-            ) : (
-                <GoogleLogin onSuccess={handleGoogleLogin} />
-            )}
-        </div>
-    );
+  const oktoClient = useOkto();
+
+  //check if user is already logged in 
+  const isloggedIn = oktoClient.isLoggedIn();
+  console.log(isloggedIn);
+  console.log(oktoClient);
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<Homepage />} />
+      </Routes>
+    </>
+  );
 }
- 
+
 export default App;
